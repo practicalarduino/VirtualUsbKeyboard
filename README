@@ -1,0 +1,31 @@
+Fake Keyboard And Mouse
+=======================
+
+Copyright 2009 Jonathan Oxer
+Copyright 2009 Hugh Blemings
+
++---------------------------------------------------------------------+
+| This project is featured in the book "Practical Arduino" by         |
+| Jonathan Oxer and Hugh Blemings (Apress, 2009). More information    |
+| about the book and this project is available at:                    |
+|                                                                     |
+| www.practicalarduino.com/projects/easy/fake-keyboard-and-mouse      |
++---------------------------------------------------------------------+
+
+Communicating with a host computer can allow a simple Arduino-based
+system to gain access to a wide variety of devices and information. Most
+people link an Arduino to a host using serial communications across a
+USB connection with custom code running on the host to send information
+to the Arduino or receive it in return, but giving your Arduino the
+ability to pretend to be a keyboard or mouse opens up a whole world of
+possibilities because it means your Arduino can interact with software
+that was never intended for external control. That could be desktop
+software such as a game or a web browser: your Arduino could "type" into
+a web form and submit it on your behalf, or act as a custom controller
+for a game!
+
+Or you could use an Arduino to connect a custom input device to your
+computer so that it emulates a regular keyboard or joystick. The custom
+input device could be a chording keyboard, a virtual keyboard, or even
+something like a virtual reality glove or head tracking system
+controlling your pointer by emulating a joystick.
