@@ -1,18 +1,21 @@
 /**
- * FakeKeyboard
- *
- * Copyright 2009 Jonathan Oxer <jon@oxer.com.au>
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 3.
+ * Fake Keyboard
  *
  * Enumerates itself as a HID (Human Interface Device) to a host
  * computer using a USB shield. The Arduino then appears to the host to
  * be a keyboard and keypress events can be sent on demand.
  *
- * This example watches the state of 4 push buttons and when a button
+ * This example watches the state of 6 push buttons and when a button
  * is pressed it sends a matching keypress event to the host.
  *
- * http://www.practicalarduino.com/projects/easy/fake-keyboard-and-mouse
+ * Copyright 2009 Jonathan Oxer <jon@oxer.com.au>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version. http://www.gnu.org/licenses/
+ *
+ * www.practicalarduino.com/projects/easy/fake-keyboard-and-mouse
  *
  * UsbKeyboard.sendKeyStroke(KEY_B, MOD_GUI_LEFT);
  */
@@ -22,10 +25,12 @@
 #include "UsbKeyboard.h"
 
 // Define the inputs to use for buttons
-#define BUTTON1 8
-#define BUTTON2 9
-#define BUTTON3 10
-#define BUTTON4 11
+#define BUTTON1 6
+#define BUTTON2 7
+#define BUTTON3 8
+#define BUTTON4 9
+#define BUTTON5 10
+#define BUTTON6 11
 
 // Use the on-board LED as an activity display
 int ledPin = 13;
@@ -44,6 +49,8 @@ void setup()
   pinMode (BUTTON2, INPUT);
   pinMode (BUTTON3, INPUT);
   pinMode (BUTTON4, INPUT);
+  pinMode (BUTTON5, INPUT);
+  pinMode (BUTTON6, INPUT);
 
   // Enable the CPU's internal 20k pull-up resistors on the button
   // inputs so they default to a "high" state
@@ -51,6 +58,8 @@ void setup()
   digitalWrite (BUTTON2, HIGH);
   digitalWrite (BUTTON3, HIGH);
   digitalWrite (BUTTON4, HIGH);
+  digitalWrite (BUTTON5, HIGH);
+  digitalWrite (BUTTON6, HIGH); 
 
   // Disable timer0 since it can mess with the USB timing. Note that
   // this means some functions such as delay() will no longer work.
@@ -79,24 +88,42 @@ void loop()
   UsbKeyboard.update();
 
   if (digitalRead(BUTTON1) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_L);
-    // Toggle the status LED
-    digitalWrite(ledPin, !digitalRead(ledPin));
+    UsbKeyboard.sendKeyStroke(KEY_A);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 
   if (digitalRead(BUTTON2) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_S);
+    UsbKeyboard.sendKeyStroke(KEY_B);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 
   if (digitalRead(BUTTON3) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_ENTER);
+    UsbKeyboard.sendKeyStroke(KEY_C);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 
   if (digitalRead(BUTTON4) == LOW) {
+    UsbKeyboard.sendKeyStroke(KEY_D);
+    digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
+  }
+  
+  if (digitalRead(BUTTON5) == LOW) {
+    UsbKeyboard.sendKeyStroke(KEY_E);
+    digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
+  }
+  
+  if (digitalRead(BUTTON6) == LOW) {
+    UsbKeyboard.sendKeyStroke(KEY_H, MOD_SHIFT_LEFT);
+    UsbKeyboard.sendKeyStroke(KEY_E);
+    UsbKeyboard.sendKeyStroke(KEY_L);
+    UsbKeyboard.sendKeyStroke(KEY_L);
+    UsbKeyboard.sendKeyStroke(KEY_O);
     UsbKeyboard.sendKeyStroke(KEY_SPACE);
+    UsbKeyboard.sendKeyStroke(KEY_W, MOD_SHIFT_LEFT);
+    UsbKeyboard.sendKeyStroke(KEY_O);
+    UsbKeyboard.sendKeyStroke(KEY_R);
+    UsbKeyboard.sendKeyStroke(KEY_L);
+    UsbKeyboard.sendKeyStroke(KEY_D);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 }
