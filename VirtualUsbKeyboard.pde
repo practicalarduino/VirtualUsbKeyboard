@@ -1,9 +1,9 @@
 /**
- * Fake Keyboard
+ * VirtualUsbKeyboard
  *
  * Enumerates itself as a HID (Human Interface Device) to a host
  * computer using a USB shield. The Arduino then appears to the host to
- * be a keyboard and keypress events can be sent on demand.
+ * be a USB keyboard and keypress events can be sent on demand.
  *
  * This example watches the state of 6 push buttons and when a button
  * is pressed it sends a matching keypress event to the host.
@@ -15,9 +15,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version. http://www.gnu.org/licenses/
  *
- * www.practicalarduino.com/projects/easy/fake-keyboard-and-mouse
- *
- * UsbKeyboard.sendKeyStroke(KEY_B, MOD_GUI_LEFT);
+ * www.practicalarduino.com/projects/easy/virtual-usb-keyboard
  */
 
 // Requires the use of the "UsbKeyboard" library available from
