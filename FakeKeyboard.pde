@@ -25,12 +25,12 @@
 #include "UsbKeyboard.h"
 
 // Define the inputs to use for buttons
-#define BUTTON1 6
-#define BUTTON2 7
-#define BUTTON3 8
-#define BUTTON4 9
-#define BUTTON5 10
-#define BUTTON6 11
+#define BUTTON_A 6
+#define BUTTON_B 7
+#define BUTTON_C 8
+#define BUTTON_D 9
+#define BUTTON_MSG 10
+#define BUTTON_ENTER 11
 
 // Use the on-board LED as an activity display
 int ledPin = 13;
@@ -45,21 +45,21 @@ void setup()
   digitalWrite (ledPin, HIGH);
 
   // Set the button pins to inputs
-  pinMode (BUTTON1, INPUT);
-  pinMode (BUTTON2, INPUT);
-  pinMode (BUTTON3, INPUT);
-  pinMode (BUTTON4, INPUT);
-  pinMode (BUTTON5, INPUT);
-  pinMode (BUTTON6, INPUT);
+  pinMode (BUTTON_A, INPUT);
+  pinMode (BUTTON_B, INPUT);
+  pinMode (BUTTON_C, INPUT);
+  pinMode (BUTTON_D, INPUT);
+  pinMode (BUTTON_MSG, INPUT);
+  pinMode (BUTTON_ENTER, INPUT);
 
   // Enable the CPU's internal 20k pull-up resistors on the button
   // inputs so they default to a "high" state
-  digitalWrite (BUTTON1, HIGH);
-  digitalWrite (BUTTON2, HIGH);
-  digitalWrite (BUTTON3, HIGH);
-  digitalWrite (BUTTON4, HIGH);
-  digitalWrite (BUTTON5, HIGH);
-  digitalWrite (BUTTON6, HIGH); 
+  digitalWrite (BUTTON_A, HIGH);
+  digitalWrite (BUTTON_B, HIGH);
+  digitalWrite (BUTTON_C, HIGH);
+  digitalWrite (BUTTON_D, HIGH);
+  digitalWrite (BUTTON_MSG, HIGH);
+  digitalWrite (BUTTON_ENTER, HIGH); 
 
   // Disable timer0 since it can mess with the USB timing. Note that
   // this means some functions such as delay() will no longer work.
@@ -87,32 +87,27 @@ void loop()
 {
   UsbKeyboard.update();
 
-  if (digitalRead(BUTTON1) == LOW) {
+  if (digitalRead(BUTTON_A) == LOW) {
     UsbKeyboard.sendKeyStroke(KEY_A);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 
-  if (digitalRead(BUTTON2) == LOW) {
+  if (digitalRead(BUTTON_B) == LOW) {
     UsbKeyboard.sendKeyStroke(KEY_B);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 
-  if (digitalRead(BUTTON3) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_C);
+  if (digitalRead(BUTTON_C) == LOW) {
+    UsbKeyboard.sendKeyStroke(KEY_1);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 
-  if (digitalRead(BUTTON4) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_D);
+  if (digitalRead(BUTTON_D) == LOW) {
+    UsbKeyboard.sendKeyStroke(KEY_A);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
   
-  if (digitalRead(BUTTON5) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_E);
-    digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
-  }
-  
-  if (digitalRead(BUTTON6) == LOW) {
+  if (digitalRead(BUTTON_MSG) == LOW) {
     UsbKeyboard.sendKeyStroke(KEY_H, MOD_SHIFT_LEFT);
     UsbKeyboard.sendKeyStroke(KEY_E);
     UsbKeyboard.sendKeyStroke(KEY_L);
@@ -124,6 +119,12 @@ void loop()
     UsbKeyboard.sendKeyStroke(KEY_R);
     UsbKeyboard.sendKeyStroke(KEY_L);
     UsbKeyboard.sendKeyStroke(KEY_D);
+    UsbKeyboard.sendKeyStroke(KEY_ENTER);
+    digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
+  }
+  
+  if (digitalRead(BUTTON_ENTER) == LOW) {
+    UsbKeyboard.sendKeyStroke(KEY_ENTER);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 }
