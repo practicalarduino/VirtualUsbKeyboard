@@ -98,15 +98,15 @@ void loop()
   }
 
   if (digitalRead(BUTTON_C) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_1);
+    UsbKeyboard.sendKeyStroke(KEY_C);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
 
   if (digitalRead(BUTTON_D) == LOW) {
-    UsbKeyboard.sendKeyStroke(KEY_A);
+    UsbKeyboard.sendKeyStroke(KEY_D);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
-  
+
   if (digitalRead(BUTTON_MSG) == LOW) {
     UsbKeyboard.sendKeyStroke(KEY_H, MOD_SHIFT_LEFT);
     UsbKeyboard.sendKeyStroke(KEY_E);
@@ -122,7 +122,7 @@ void loop()
     UsbKeyboard.sendKeyStroke(KEY_ENTER);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
   }
-  
+
   if (digitalRead(BUTTON_ENTER) == LOW) {
     UsbKeyboard.sendKeyStroke(KEY_ENTER);
     digitalWrite(ledPin, !digitalRead(ledPin)); // Toggle status LED
