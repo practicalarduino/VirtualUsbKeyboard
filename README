@@ -1,5 +1,5 @@
-Fake Keyboard And Mouse
-=======================
+Virtual USB Keyboard
+====================
 
 Copyright 2009 Jonathan Oxer
 Copyright 2009 Hugh Blemings
@@ -9,7 +9,7 @@ Copyright 2009 Hugh Blemings
 | Jonathan Oxer and Hugh Blemings (Apress, 2009). More information    |
 | about the book and this project is available at:                    |
 |                                                                     |
-| www.practicalarduino.com/projects/easy/fake-keyboard-and-mouse      |
+| www.practicalarduino.com/projects/easy/virtual-usb-keyboard         |
 +---------------------------------------------------------------------+
 
 Communicating with a host computer can allow a simple Arduino-based
